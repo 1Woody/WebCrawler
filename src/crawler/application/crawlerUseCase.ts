@@ -22,7 +22,7 @@ export class CrawlerUseCase {
             const crawlerResponse = await this.addNewCrawl(url);
             return crawlerResponse;
         }else{
-            //DB needs and update
+            //DB needs update
             crawlInHistory.timesVisited++;
             return crawlInHistory;
         }

@@ -6,7 +6,7 @@ async function promptCrawlWebsite(url = "none") {
     console.clear();
     const website = JSON.parse(JSON.stringify(await apiCrawler.crawlWebsite(url)));
     if (website.url !== "Failed") {
-        const answers = await inquirer.prompt({
+        await inquirer.prompt({
             type: "rawlist",
             name: "url",
             message: `Website: ${website.url} \n  Times visited: ${website.timesVisited}`,
@@ -21,8 +21,8 @@ async function promptsearchURL() {
     const url = await promptInsertURL();
     console.clear();
     const website = JSON.parse(JSON.stringify(await apiCrawler.getWebById(url)));
-    if (website.url !== "Failed") {
-        const answers = await inquirer.prompt({
+    if (website.url !== "Failed" && website.url !== "Not found") {
+        await inquirer.prompt({
             type: "rawlist",
             name: "url",
             message: `Website ${website.url} \n Times visited: ${website.timesVisited}`,

@@ -14,7 +14,7 @@ export class CrawlerController {
                 const { url } = req.query;
                 const responseWeb = await this.crawlerUseCase.findWebById(String(url));
                 if (responseWeb !== null) res.send(responseWeb);
-                else res.send({ message : "Not found"});
+                else res.send({ url : "Not found"});
             } catch(e){
                 handleHttp(res, 'ERROR_GET_WEBSITE_FROM_HISTORY');
             }
@@ -29,7 +29,7 @@ export class CrawlerController {
                 const { url } = req.body;
                 const responseWeb = await this.crawlerUseCase.crawlWebsite(String(url));
                 if (responseWeb) res.send(responseWeb);
-                else res.send({ message : "Not found"})
+                else res.send({ url : "Not found"})
             } catch(e){
                 handleHttp(res, 'ERROR_GET_WEBSITE_FROM_HISTORY');
             }

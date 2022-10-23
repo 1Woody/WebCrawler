@@ -7,6 +7,7 @@
     "start": "npm run build && node ./dist/crawler/crawler.app.js",
     "start:prod": "node ./dist/crawler/crawler.app.js",
     "start:cli": "npm run build && node ./dist/termcli/termcli.app.js",
+    "start:prod:cli": "node ./dist/termcli/termcli.app.js",
     "build": "rimraf ./dist && tsc",
     "dev": "ts-node-dev ./src/crawler/crawler.app.ts",
     "dev:cli": "ts-node-dev ./src/termcli/termcli.app.ts",
