@@ -1,0 +1,29 @@
+version: "3.8"
+services:
+  app:
+    container_name: crawler-app-prod
+    env_file:
+      - .env
+    restart: always
+    depends_on:
+      - mongo
+    build:
+      context: .
+      target: production   
+    ports:
+      - 3000:3000
+    networks:
+      - prodnet
+
+  mongo:
+    container_name: mongo
+    restart: always
+    image: mongo:5.0.0
+    ports:
+      - 27017:27017
+    networks:
+      - prodnet
+
+networks:
+  prodnet:
+    driver: bridge

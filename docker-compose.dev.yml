@@ -1,0 +1,31 @@
+version: "3.8"
+services:
+  app:
+    container_name: crawler-app-dev
+    restart: always
+    depends_on:
+      - mongo
+    build:
+      context: .
+      target: development
+    volumes:
+      - ./:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - 3000:3000
+    networks:
+      - mynet
+    command: npm run dev:docker
+
+  mongo:
+    container_name: mongo
+    restart: always
+    image: mongo:5.0.0
+    ports:
+      - 27017:27017
+    networks:
+      - mynet
+
+networks:
+  mynet:
+    driver: bridge
