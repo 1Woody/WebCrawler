@@ -16,7 +16,7 @@
     "docker:devEnv:down": "docker-compose -f docker-compose.dev.yml down",
     "docker:prodEnv:up": "docker-compose up --build",
     "docker:prodEnv:down": "docker-compose down",
-    "test": "set NODE_ENV=test&& jest --verbose --detectOpenHandles --silent"
+    "test": "set NODE_ENV=test&& jest --verbose --silent --detectOpenHandles"
   },
   "keywords": [],
   "author": "",
