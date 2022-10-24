@@ -28,8 +28,6 @@ describe("Crawler", () => {
         });
     });
 
-
-
     describe("GET /searchInHistory", () => {
 
         const queryurl = "http://www.nnergix.com"
