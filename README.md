@@ -226,30 +226,151 @@ Close terminal application
 
 ## Development
 ---
+The project development is centered around docker containers, but local development is also available. 
+To work localy, rememeber to modifiy the mongo database URL on the ``` .env ```  file. 
+
+### Local development
+
+Check scripts on ```package.json``` for more info.
+
+First of all we install all dependencies with
+
+    > npm install
+
+Now we have to make sure we have an url and active database on the URL of the .env file.
+
+If needed we can execute the test database, please refer to Docker testing.
+
+    !!!
+    If docker test database used, change the DB_URI on the .env to: 
+
+    DB_URI: mongodb://localhost:27017/CrawlerDB
+
+Once the Database is running we can start the app by this commands: 
+
+``` dev ```
+Allows you to run with ts-node
+
+    > npm run dev
+
+``` dev:cli ```
+Allows you to run your terminal cli app with ts-node.
+
+!!! Remember to deploy the API and match the API variable on the ``` .env ``` file.
+
+    > npm run dev:cli
 
 
+``` start ```
+Allows you to run your API from node.
 
+    > npm run start
 
+``` start:cli ```
+Allows you to run your API from node.
 
-### Project structure 
+    > npm run start:cli
 
+#### Production local 
+
+``` start:prod ```
+Allows you to run your API from node.
+
+    > npm run start:prod
+
+``` start:prod:cli ```
+Allows you to run your terminal application from node.
+
+    > npm run start:prod:cli
 
 
 ## Docker
 ---
-Step by step of how to install the digital tool. In this section it is recommended to explain the architecture of folders and modules that make up the system.
 
-Depending on the type of digital tool, the level of complexity may vary. On some occasions it may be necessary to install components that are dependent on the digital tool. If this is the case, add the following section as well.
-The installation guide should specifically contain:
-- The operating system requirements for the compilation (specific versions of libraries, package and dependency management software, SDKs and compilers, etc.).
-- The project's own dependencies, both external and internal (order of compilation of sub-modules, configuration of the location of dynamic libraries, etc.).
-- Specific steps for compiling the source code and executing unit tests if the project has them.
+The project is automated with docker containers to use as a development and as a production deployment. With 2 Stages on the DockerFiles.
 
-### Dependencies
-Description of the external resources that generate a dependency for the reuse of the digital tool (libraries, frameworks, access to databases and licenses for each resource). It is good practice to describe the latest versions that the digital tool has been tested on.
+### Docker development
 
-    You can use this font style to differentiate the installation commands.
+For the development docker scripts are automated to deploy and eliminate when needed.
+
+    !!!
+    Rememeber to set DB_URI to mongodb://mongo:27017/CrawlerDB before executing commands
+
+``` docker:dev:up ```
+Deploys API with ts-node and a volume connected to update your server when changed. Also implements a mongo databas on a second container.
+
+    > npm run docker:dev:up
+
+``` docker:dev:down ```
+Stop and remove containers
+
+    > npm run docker:dev:down
+
+
+### Docker production
+
+``` docker:prod:up ```
+Deploys API and terminal app, but only js files from ```/dist``` and ```package.json``` files are copied.
+
+    > npm run docker:prod:up
+
+``` docker:prod:down ```
+Stop and remove containers
+
+    > npm run docker:prod:down
+
+
+### Docker testing
+
+``` docker:test:up ```
+Deploys Mongo database for testing porpouses.
+
+    > npm run docker:test:up
+
+``` docker:test:down ```
+Stop and remove containers
+
+    > npm run docker:test:down
 
 ## Testing
 ---
-This section explains to developers the common ways to submit a pull requests, how to declare bugs in the tool, and what style guides to use when writing more lines of code. You can also make a list of points that can be improved in your code to create ideas for improvement.
+The application uses ```Jest``` and ```supertest``` libraries to test the endpoints of the API. 
+To execute testing we need to: 
+
+Fist, execute mongo database from docker test
+
+    > npm run docker:test:up
+
+Then, execute the test command: 
+
+    > npm run test
+
+The different endpoints are tested with this settings: 
+
+    TEST OUTPUT
+    PASS  test/apps/crawler/crawler.test.ts (6.157 s)
+    Crawler
+        GET /crawlHistory
+        given a correct request
+            √ should return a 200 status code (191 ms)
+            √ should return json content type (47 ms)
+            √ should return JsonArray Object (25 ms)
+        GET /searchInHistory
+        given a correct request
+            √ should return a 200 status code (29 ms)
+            √ should return json content type (20 ms)
+            √ should return Object (20 ms)
+        given a incorrect request
+            √ should return a 500 status code (32 ms)
+        POST /crawl
+        given a correct request
+            √ should return a 200 status code (1204 ms)
+            √ should return json content type (24 ms)
+            √ should return Object (22 ms)
+        given a incorrect request
+            √ should return a 500 status code (25 ms)
+
+        Test Suites: 1 passed, 1 total
+        Tests:       11 passed, 11 total
+        Snapshots:   0 total
+        Time:        6.34 s
