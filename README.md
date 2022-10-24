@@ -44,22 +44,22 @@ In case a quick installation and use is needed, we recommend to deploy the produ
 #### Deploy production Docker Containers
 This option will deploy 2 containers, one for the API and another one for the Database. 
    
-    > npm run docker:prod:up
+    npm run docker:prod:up
 
 Now you can access your API on ``http://localhost:3000``. 
 Please refer to the API documentation for the available request.
 
 You can also access the API of your container using Docker Desktop or accessing by command using: 
 
-    > docker exec -it crawler-app-prod sh
+    docker exec -it crawler-app-prod sh
 
 Once inside the ``usr/src/app`` you can execute this command to run the Terminal CLI App: 
 
-    > npm run start:prod:cli
+    npm run start:prod:cli
 
 You can close all your containers using the command:
 
-    > npm run docker:prod:down
+    npm run docker:prod:down
 
 If you want more information please refer to the documentation below.
 
@@ -235,7 +235,7 @@ Check scripts on ```package.json``` for more info.
 
 First of all we install all dependencies with
 
-    > npm install
+    npm install
 
 Now we have to make sure we have an url and active database on the URL of the .env file.
 
@@ -251,37 +251,37 @@ Once the Database is running we can start the app by this commands:
 ``` dev ```
 Allows you to run with ts-node
 
-    > npm run dev
+    npm run dev
 
 ``` dev:cli ```
 Allows you to run your terminal cli app with ts-node.
 
 !!! Remember to deploy the API and match the API variable on the ``` .env ``` file.
 
-    > npm run dev:cli
+    npm run dev:cli
 
 
 ``` start ```
 Allows you to run your API from node.
 
-    > npm run start
+    npm run start
 
 ``` start:cli ```
 Allows you to run your API from node.
 
-    > npm run start:cli
+    npm run start:cli
 
 #### Production local 
 
 ``` start:prod ```
 Allows you to run your API from node.
 
-    > npm run start:prod
+    npm run start:prod
 
 ``` start:prod:cli ```
 Allows you to run your terminal application from node.
 
-    > npm run start:prod:cli
+    npm run start:prod:cli
 
 
 ## Docker
@@ -299,12 +299,12 @@ For the development docker scripts are automated to deploy and eliminate when ne
 ``` docker:dev:up ```
 Deploys API with ts-node and a volume connected to update your server when changed. Also implements a mongo databas on a second container.
 
-    > npm run docker:dev:up
+    npm run docker:dev:up
 
 ``` docker:dev:down ```
 Stop and remove containers
 
-    > npm run docker:dev:down
+    npm run docker:dev:down
 
 
 ### Docker production
@@ -312,12 +312,12 @@ Stop and remove containers
 ``` docker:prod:up ```
 Deploys API and terminal app, but only js files from ```/dist``` and ```package.json``` files are copied.
 
-    > npm run docker:prod:up
+    npm run docker:prod:up
 
 ``` docker:prod:down ```
 Stop and remove containers
 
-    > npm run docker:prod:down
+    npm run docker:prod:down
 
 
 ### Docker testing
@@ -325,12 +325,12 @@ Stop and remove containers
 ``` docker:test:up ```
 Deploys Mongo database for testing porpouses.
 
-    > npm run docker:test:up
+    npm run docker:test:up
 
 ``` docker:test:down ```
 Stop and remove containers
 
-    > npm run docker:test:down
+    npm run docker:test:down
 
 ## Testing
 ---
@@ -339,11 +339,11 @@ To execute testing we need to:
 
 Fist, execute mongo database from docker test
 
-    > npm run docker:test:up
+    npm run docker:test:up
 
 Then, execute the test command: 
 
-    > npm run test
+    npm run test
 
 The different endpoints are tested with this settings: 
 
