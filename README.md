@@ -24,6 +24,7 @@ This project is based in Domain Driven Design architecture (DDD).
 - [Development](#development)
 - [Docker](#docker)
 - [Testing](#testing)
+- [To Do](#to-do)
 
 
 ## Prerequisites
@@ -374,3 +375,22 @@ The different endpoints are tested with this settings:
         Tests:       11 passed, 11 total
         Snapshots:   0 total
         Time:        6.34 s
+
+## To Do
+
+Quick feature imporvements:
+
+* Object atribute visitedTimes not implemented (not updating)
+* Limit request response time when crawler not working on the web
+* Improve website check validation
+* Add clear cache as petition and by time period
+
+Mid/Future features: 
+
+* Add unit & expand integration testing
+* Add E2E
+* Improve request validation
+* Improve crawling features
+* Secure DB Connections
+* Persistency on Docker production Data
+* Add CI/CD to repository
