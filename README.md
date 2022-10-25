@@ -380,6 +380,7 @@ The different endpoints are tested with this settings:
 
 Quick feature improvements:
 
+* Clean code
 * Object atribute visitedTimes not implemented (not updating)
 * Limit request response time when crawler not working on the web
 * Improve website check validation
