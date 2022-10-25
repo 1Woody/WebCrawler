@@ -378,7 +378,7 @@ The different endpoints are tested with this settings:
 
 ## To Do
 
-Quick feature imporvements:
+Quick feature improvements:
 
 * Object atribute visitedTimes not implemented (not updating)
 * Limit request response time when crawler not working on the web
